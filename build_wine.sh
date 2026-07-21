@@ -26,9 +26,9 @@ LDFLAGS="-L${WINE_LIBS}/lib -Wl,-rpath,${WINE_LIBS}/lib" \
 --with-sdl \
 --with-gettext \
 --with-pthread \
---with-unwind \
 --with-vulkan \
 --with-ffmpeg \
+--with-inotify \
 --without-opengl \
 --without-pcap \
 --without-pcsclite \
@@ -40,7 +40,6 @@ LDFLAGS="-L${WINE_LIBS}/lib -Wl,-rpath,${WINE_LIBS}/lib" \
 --without-gettextpo \
 --without-gphoto \
 --without-gssapi \
---without-inotify \
 --without-krb5 \
 --without-netapi \
 --without-opencl \
