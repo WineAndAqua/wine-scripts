@@ -1,17 +1,17 @@
 ## configure
 cd dxmt-aqua
 export PATH="$PATH:$(pwd)/toolchains/llvm-mingw-20231017-ucrt-macos-universal/bin"
-INSTALL_PATH=/opt/stuff/wine/dxmt-target
+INSTALL_PATH=/opt/stuff/wine/dxmt-target-x86
 meson setup \
   -Dnative_llvm_path=toolchains/llvm-darwin \
   -Dwine_builtin_dll=true \
   -Dwine_install_path=toolchains/wine \
   -Denable_nvapi=true \
   -Denable_nvngx=true \
+  -Denable_d3d12=true \
   --prefix $INSTALL_PATH \
-  --cross-file build-win64-sys.txt \
-  --native-file build-osx.txt \
-  --buildtype release \
+  --cross-file build-win64.txt \
+  --buildtype debug \
   build
 ## build
 meson compile -C build
@@ -26,8 +26,7 @@ meson setup \
   -Denable_nvapi=false \
   -Denable_nvngx=false \
   --prefix $INSTALL_PATH \
-  --cross-file build-win32-sys.txt \
-  --native-file build-osx.txt \
+  --cross-file build-win32.txt \
   --buildtype release \
   build32
 ## build

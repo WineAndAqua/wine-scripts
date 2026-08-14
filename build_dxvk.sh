@@ -4,7 +4,7 @@ TOP=$(pwd)
 
 cd dxvk
 
-WINE_LIBS=/opt/stuff/wine/libs/target
+WINE_LIBS=/opt/stuff/wine/libs/target-x86
 
 PATH=${WINE_LIBS}/bin:${PATH}
 
@@ -16,12 +16,11 @@ meson setup --reconfigure \
   -Denable_d3d11=false \
   -Dlibdir=${WINE_LIBS}/lib \
   -Dincludedir=${WINE_LIBS}/include \
-  --prefix /opt/stuff/wine/dxvk-target \
   --cross-file build-win32.txt \
   --buildtype release \
   build.w32
 meson compile -C build.w32
 
-mkdir -p ${TOP}/dxvk-target/i386-windows
+mkdir -p ${TOP}/dxvk-target-x86/i386-windows
 cp build.w32/src/d3d8/d3d8.dll ${TOP}/dxvk-target/i386-windows
 cp build.w32/src/d3d9/d3d9.dll ${TOP}/dxvk-target/i386-windows

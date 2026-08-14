@@ -2,7 +2,8 @@
 
 cd wine-aqua
 
-WINE_LIBS=/opt/stuff/wine/libs/target
+WINE_LIBS=/opt/stuff/wine/libs/target-x86
+WINE_PATH=/opt/stuff/wine/target-x86
 
 PATH=${WINE_LIBS}/bin:${PATH}
 
@@ -12,12 +13,13 @@ CXX="clang++ -arch x86_64" \
 CFLAGS="-I${WINE_LIBS}/include" \
 LDFLAGS="-L${WINE_LIBS}/lib -Wl,-rpath,${WINE_LIBS}/lib" \
 --build="x86_64-apple-darwin" \
---prefix=/opt/stuff/wine/target \
+--prefix=${WINE_PATH} \
 --disable-tests \
 --disable-win16 \
 --disable-winebth_sys \
 --disable-winemenubuilder \
 --enable-archs=i386,x86_64 \
+--with-mingw=clang \
 --with-coreaudio \
 --with-freetype \
 --with-gnutls \
